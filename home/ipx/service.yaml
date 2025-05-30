@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: h-ipx
+  namespace: open5gs
+spec:
+  selector:
+    app: h-ipx
+ # ports:
+ #   - name: openflow
+ #     protocol: TCP
+ #     port: 6633
+ #     targetPort: 6633
+  ports:
+    - name: sbi
+      port: 80
+    - name: openflow
+      port: 6633
+    - name: metrics
+      port: 8000

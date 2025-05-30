@@ -1,0 +1,7 @@
+# Core Qiskit packages (terra includes quantum-info)
+qiskit-terra>=0.23.0
+qiskit-aer>=0.11.1
+qiskit-ibmq-provider>=0.19.0
+numpy
+scapy
+prometheus-client

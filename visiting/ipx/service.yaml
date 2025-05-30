@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: v-ipx
+  namespace: open5gs
+spec:
+  selector:
+    app: v-ipx
+  ports:
+    - name: sbi
+      port: 80
+    - name: openflow
+      port: 6633
+    - name: metrics
+      port: 8000

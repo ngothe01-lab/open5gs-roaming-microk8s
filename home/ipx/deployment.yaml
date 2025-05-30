@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: h-ipx
+  namespace: open5gs
+spec:
+  serviceName: h-ipx
+  replicas: 1
+  selector:
+    matchLabels:
+      app: h-ipx
+  template:
+    metadata:
+      labels:
+        app: h-ipx
+    spec:
+      containers:
+        - name: ipx-sepp
+          image: phd-research/ipx-sepp:latest # Use the latest image from your repository
+          imagePullPolicy: Always
+          env:
+            - name: SEPP_CONFIG
+              value: /etc/open5gs/sepp.yaml
+          command: [ "open5gs-seppd", "-c", "/etc/open5gs/sepp.yaml" ]
+          securityContext:
+            privileged: true
+            capabilities:
+              add: ["NET_ADMIN", "NET_RAW", "SYS_ADMIN"]
+          ports:
+            - containerPort: 80
+            - containerPort: 6633
+            - containerPort: 8000
+          volumeMounts:
+            - name: sepp-config
+              mountPath: /etc/open5gs/sepp.yaml
+              subPath: sepp.yaml
+      volumes:
+        - name: sepp-config
+          configMap:
+            name: h-ipx-sepp-config
+            items:
+              - key: sepp.yaml
+                path: sepp.yaml

@@ -1,3 +1,14 @@
+# IPX-Only structure
+ipx-only/
+├── Dockerfile
+├── requirements-common.txt
+├── requirements-qkd.txt
+├── requirements-qsd.txt
+├── combined-entrypoint.sh
+├── qkd_controller.py
+└── qsd_controller.py
+
+
 # K8s Deployment
 
 This repository contains Kubernetes deployment configurations for applications.

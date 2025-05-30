@@ -26,3 +26,11 @@ data:
           sepp:
             - receiver: h-sepp.open5gs.svc.cluster.local
               uri: http://h-sepp.open5gs.svc.cluster.local:80 
+            # --- NEW IPX HOPS ---
+            - receiver: h-ipx.open5gs.svc.cluster.local
+              uri: tcp://h-ipx.open5gs.svc.cluster.local:6633
+            - receiver: v-ipx.open5gs.svc.cluster.local
+              uri: tcp://v-ipx.open5gs.svc.cluster.local:6633
+            # --- END IPX HOPS ---
+            - receiver: v-sepp.open5gs.svc.cluster.local
+              uri: http://v-sepp.open5gs.svc.cluster.local:80              
